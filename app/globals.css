@@ -1,0 +1,784 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Pulse Glow Animation */
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(255, 149, 0, 0.5); }
+  50% { box-shadow: 0 0 40px rgba(255, 149, 0, 0.8); }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* 3D Transform Support */
+.transform-3d {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.transform-gpu {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.rotate-y-12 {
+  transform: rotateY(12deg);
+}
+
+.group-hover\:rotate-y-12:hover {
+  transform: rotateY(12deg);
+}
+
+/* Animation Delays */
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+
+/* Icon Animations */
+@keyframes iconFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes iconRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-icon-float {
+  animation: iconFloat 3s ease-in-out infinite;
+}
+
+.animate-icon-rotate {
+  animation: iconRotate 20s linear infinite;
+}
+
+/* 3D Card Effect */
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.card-3d:hover {
+  transform: rotateY(10deg) rotateX(5deg);
+}
+
+/* Glow Effects */
+.glow-amber {
+  filter: drop-shadow(0 0 20px rgba(255, 149, 0, 0.5));
+}
+
+.glow-blue {
+  filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.5));
+}
+
+.glow-green {
+  filter: drop-shadow(0 0 20px rgba(34, 197, 94, 0.5));
+}
+
+:root {
+  /* Defense Contractor Dark Theme */
+  --defense-black: #0A0E1A;       /* Deep space black */
+  --defense-charcoal: #1A1F2E;    /* Military charcoal */
+  --defense-gunmetal: #2C3444;    /* Gunmetal gray */
+  --defense-slate: #3F4754;       /* Tactical slate */
+  --defense-navy: #0F1C2E;        /* Deep military navy */
+  
+  /* Accent Colors */
+  --tactical-amber: #FF9500;      /* Warning/CTA */
+  --tactical-green: #00FF41;      /* Success/Active */
+  --tactical-red: #FF0040;        /* Alert/Critical */
+  --tactical-cyan: #00D4FF;       /* Info/Tech */
+  --strategic-gold: #C9A961;      /* Premium accent */
+  
+  /* Surface Colors */
+  --background: #0A0E1A;          /* Dark military background */
+  --surface: #F8FAFB;            /* Subtle blue-gray surface */
+  --surface-dark: #1A1F2E;       /* Dark surface for contrast */
+  
+  /* Text Colors */
+  --text-primary: #1A202C;        /* Rich dark text */
+  --text-secondary: #4A5568;      /* Professional gray text */
+  --text-light: #718096;          /* Light gray text */
+  --text-inverse: #F7FAFC;       /* Light text on dark */
+  
+  /* Functional Colors */
+  --border: #E2E8F0;             /* Sophisticated border */
+  --border-dark: #2D3748;        /* Dark mode border */
+  --success: #2F855A;            /* Military success green */
+  --warning: #D69E2E;            /* Tactical warning */
+  --error: #C53030;              /* Alert red */
+  
+  /* Defense Industry Shadow System */
+  --shadow-sm: 0 1px 3px rgba(27, 58, 82, 0.05);
+  --shadow: 0 2px 8px rgba(27, 58, 82, 0.08);
+  --shadow-md: 0 4px 12px rgba(27, 58, 82, 0.1);
+  --shadow-lg: 0 10px 25px rgba(27, 58, 82, 0.12);
+  --shadow-xl: 0 20px 35px rgba(27, 58, 82, 0.15);
+  
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-2xl: 5rem;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  color: var(--text-primary);
+  background: var(--background);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography System */
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text-primary);
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
+p {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+
+a {
+  color: var(--primary-blue);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--primary-dark);
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Section Spacing */
+section {
+  padding: 0;
+}
+
+/* Military Defense Button Styles */
+.btn-primary {
+  background: #1A1F2E;
+  color: #FFB700;
+  padding: 1rem 2.25rem;
+  border-radius: 0.25rem;
+  font-weight: 800;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 2px solid #FF9500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(255, 149, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 165, 0, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-primary:hover {
+  background: #FF9500;
+  color: #0A0E1A;
+  border-color: #FFB700;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 30px rgba(255, 149, 0, 0.5);
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #FFFFFF;
+  padding: 1rem 2.25rem;
+  border-radius: 0.25rem;
+  font-weight: 800;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 2px solid #FF9500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 149, 0, 0.1);
+  color: #FFB700;
+  border-color: #FFB700;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 25px rgba(255, 149, 0, 0.4);
+}
+
+/* Professional Card Styles */
+.card {
+  background: var(--surface); /* Use dark surface color */
+  border-radius: 0.75rem;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+/* Form Styles */
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  background: var(--surface); /* Use dark surface color */
+  color: var(--text-primary);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+}
+
+/* Utility Classes */
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-light {
+  color: var(--text-light);
+}
+
+.bg-surface {
+  background: var(--surface);
+}
+
+.bg-white {
+  background: var(--surface); /* Use dark surface color */
+}
+
+.border-light {
+  border: 1px solid var(--border);
+}
+
+/* Focus States for Accessibility */
+*:focus-visible {
+  outline: 2px solid var(--primary-blue);
+  outline-offset: 2px;
+}
+
+/* Screen Reader Only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Amber Glow Effect */
+.drop-shadow-amber-glow {
+  filter: drop-shadow(0 0 20px rgba(255, 149, 0, 0.5)) drop-shadow(0 0 40px rgba(255, 149, 0, 0.3));
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+  }
+  
+  p {
+    font-size: 1rem;
+  }
+  
+  /* Removed section padding for seamless design */
+}
+
+/* Print Styles */
+@media print {
+  * {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  
+  a {
+    text-decoration: underline;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Defense Contractor Visual Elements */
+.defense-gradient {
+  background: linear-gradient(135deg, var(--defense-black) 0%, var(--defense-charcoal) 50%, var(--defense-gunmetal) 100%);
+}
+
+.dark-defense-bg {
+  background: linear-gradient(180deg, var(--defense-charcoal) 0%, var(--defense-black) 100%);
+}
+
+.tactical-border {
+  border: 2px solid var(--gunmetal);
+  position: relative;
+}
+
+.tactical-border::before,
+.tactical-border::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--tactical-amber);
+}
+
+.tactical-border::before {
+  top: -2px;
+  left: -2px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.tactical-border::after {
+  bottom: -2px;
+  right: -2px;
+  border-left: none;
+  border-top: none;
+}
+
+/* Chevron Divider */
+.chevron-divider {
+  position: relative;
+  height: 40px;
+  background: linear-gradient(135deg, transparent 25%, var(--navy-deep) 25%, var(--navy-deep) 50%, transparent 50%, transparent 75%, var(--navy-deep) 75%);
+  background-size: 40px 40px;
+  opacity: 0.1;
+}
+
+/* Military Grid Pattern */
+.military-grid {
+  background-image: 
+    linear-gradient(var(--gunmetal) 1px, transparent 1px),
+    linear-gradient(90deg, var(--gunmetal) 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: -1px -1px;
+  opacity: 0.05;
+}
+
+/* Hexagonal Pattern */
+.hex-pattern {
+  background-image: 
+    linear-gradient(30deg, var(--tactical-amber) 12%, transparent 12.5%, transparent 87%, var(--tactical-amber) 87.5%, var(--tactical-amber)),
+    linear-gradient(150deg, var(--tactical-amber) 12%, transparent 12.5%, transparent 87%, var(--tactical-amber) 87.5%, var(--tactical-amber)),
+    linear-gradient(30deg, var(--tactical-amber) 12%, transparent 12.5%, transparent 87%, var(--tactical-amber) 87.5%, var(--tactical-amber)),
+    linear-gradient(150deg, var(--tactical-amber) 12%, transparent 12.5%, transparent 87%, var(--tactical-amber) 87.5%, var(--tactical-amber)),
+    linear-gradient(60deg, rgba(255, 149, 0, 0.1) 25%, transparent 25.5%, transparent 75%, rgba(255, 149, 0, 0.1) 75%, rgba(255, 149, 0, 0.1)),
+    linear-gradient(60deg, rgba(255, 149, 0, 0.1) 25%, transparent 25.5%, transparent 75%, rgba(255, 149, 0, 0.1) 75%, rgba(255, 149, 0, 0.1));
+  background-size: 80px 140px;
+  background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+  opacity: 0.03;
+}
+
+/* Radar Pattern */
+.radar-pattern {
+  background: 
+    radial-gradient(circle at center, transparent 20%, var(--tactical-amber) 20%, var(--tactical-amber) 21%, transparent 21%, transparent 40%, var(--tactical-amber) 40%, var(--tactical-amber) 41%, transparent 41%, transparent 60%, var(--tactical-amber) 60%, var(--tactical-amber) 61%, transparent 61%, transparent 80%, var(--tactical-amber) 80%, var(--tactical-amber) 81%, transparent 81%),
+    linear-gradient(0deg, var(--tactical-amber) 0.5%, transparent 0.5%),
+    linear-gradient(90deg, var(--tactical-amber) 0.5%, transparent 0.5%);
+  background-size: 100% 100%, 100% 100%, 100% 100%;
+  opacity: 0.05;
+}
+
+/* Technical Grid with Glow */
+.tech-grid-glow {
+  background-image: 
+    linear-gradient(var(--tactical-amber) 1px, transparent 1px),
+    linear-gradient(90deg, var(--tactical-amber) 1px, transparent 1px);
+  background-size: 100px 100px;
+  opacity: 0.05;
+  filter: drop-shadow(0 0 2px var(--tactical-amber));
+}
+
+/* Tactical Badge */
+.tactical-badge {
+  background: linear-gradient(135deg, var(--gunmetal), var(--charcoal));
+  border: 1px solid var(--tactical-amber);
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 85% 100%, 0 100%);
+  padding: 0.5rem 1.5rem 0.5rem 1rem;
+}
+
+/* Military Button Styles */
+.btn-military {
+  background: linear-gradient(135deg, var(--navy-deep), var(--air-force-blue));
+  color: white;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-military:hover {
+  border-color: var(--tactical-amber);
+  box-shadow: 0 0 20px rgba(255, 165, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-military::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 165, 0, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-military:hover::before {
+  left: 100%;
+}
+
+/* Custom Scrollbar with Military Theme */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gunmetal);
+  border: 1px solid var(--charcoal);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--steel-gray), var(--gunmetal));
+  border-radius: 2px;
+  border: 1px solid var(--charcoal);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--tactical-amber), var(--steel-gray));
+}
+
+/* Grid System */
+.grid {
+  display: grid;
+  gap: var(--spacing-lg);
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-cols-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 768px) {
+  .md\:grid-cols-1 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Flexbox Utilities */
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.gap-6 {
+  gap: 1.5rem;
+}
+
+.gap-8 {
+  gap: 2rem;
+}
+
+/* Text Alignment */
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* Margin Utilities */
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
+.mb-8 {
+  margin-bottom: 2rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
+.mt-8 {
+  margin-top: 2rem;
+}
+
+/* Padding Utilities */
+.p-4 {
+  padding: 1rem;
+}
+
+.p-6 {
+  padding: 1.5rem;
+}
+
+.p-8 {
+  padding: 2rem;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+/* Width Utilities */
+.w-full {
+  width: 100%;
+}
+
+.max-w-xl {
+  max-width: 36rem;
+}
+
+.max-w-2xl {
+  max-width: 42rem;
+}
+
+.max-w-3xl {
+  max-width: 48rem;
+}
+
+.max-w-4xl {
+  max-width: 56rem;
+}
+
+.max-w-5xl {
+  max-width: 64rem;
+}
+
+/* Height Utilities */
+.h-full {
+  height: 100%;
+}
+
+.min-h-screen {
+  min-height: 100vh;
+}
+
+/* Border Radius */
+.rounded {
+  border-radius: 0.25rem;
+}
+
+.rounded-md {
+  border-radius: 0.375rem;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.rounded-xl {
+  border-radius: 0.75rem;
+}
+
+.rounded-2xl {
+  border-radius: 1rem;
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}
