@@ -125,7 +125,7 @@ export default function LandSystemsPage() {
                 <svg className="w-5 h-5 mr-2 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
-                Back to Defense Categories
+                Back to Defence Categories
               </Link>
 
               <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -152,7 +152,7 @@ export default function LandSystemsPage() {
                     
                     <p className="text-lg text-gray-400 leading-relaxed mb-8">
                       Comprehensive DGDP support for main battle tanks, armored personnel carriers, 
-                      and land-based defense systems entering Bangladesh market. Facilitating procurement 
+                      and land-based defence systems entering Bangladesh market. Facilitating procurement 
                       of 150+ VT-5 light tanks and modernization of 850+ armored units under Forces Goal 2030.
                     </p>
 

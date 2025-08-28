@@ -35,9 +35,9 @@ export default function DefenseProducts() {
     },
     {
       id: 'air-defense',
-      title: 'Air Defense',
-      subtitle: 'Aircraft & Defense Systems',
-      description: 'Compliance assistance for fighter aircraft, helicopters, UAVs, and air defense systems.',
+      title: 'Air Defence',
+      subtitle: 'Aircraft & Defence Systems',
+      description: 'Compliance assistance for fighter aircraft, helicopters, UAVs, and air defence systems.',
       icon: EnhancedJetIcon,
       color: 'from-sky-600/20 to-sky-800/20',
       borderColor: 'hover:border-sky-500/50',
@@ -79,7 +79,7 @@ export default function DefenseProducts() {
     <>
       <SVGFilters />
       <section id="products" className="py-0 bg-gradient-to-b from-gray-900 via-slate-900 to-gray-900 relative overflow-hidden border-b-2 border-amber-500">
-        {/* Hexagonal Defense Pattern */}
+        {/* Hexagonal Defence Pattern */}
         <div className="absolute inset-0 hex-pattern"></div>
       <div className="absolute inset-0 radar-pattern"></div>
       <div className="w-full relative z-10 py-12">
@@ -92,11 +92,11 @@ export default function DefenseProducts() {
           </div>
           
           <h2 className="text-4xl md:text-5xl font-black text-gray-100 mb-4 uppercase tracking-tight">
-            Comprehensive Defense Categories
+            Comprehensive Defence Categories
           </h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            We provide expert assistance across all major defense procurement categories, 
-            helping you navigate Bangladesh's defense market with local expertise and regulatory compliance.
+            We provide expert assistance across all major defence procurement categories, 
+            helping you navigate Bangladesh's defence market with local expertise and regulatory compliance.
           </p>
         </div>
 
@@ -176,7 +176,7 @@ export default function DefenseProducts() {
               Ready to Navigate Your Category?
             </h3>
             <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
-              We provide comprehensive support across all defense procurement categories. 
+              We provide comprehensive support across all defence procurement categories. 
               Let us help you with the specific requirements for your equipment type.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

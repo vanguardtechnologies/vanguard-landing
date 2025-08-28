@@ -3,9 +3,9 @@ import './globals.css'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://vanguardtech.bd'),
-  title: 'Vanguard Technology - Official DGDP Agent Bangladesh | Defense Procurement Services',
-  description: 'Expert DGDP agent services for international defense manufacturers. Navigate Bangladesh\'s $3.34B defense market with local expertise and government relationships.',
-  keywords: 'DGDP agent Bangladesh, defense procurement Bangladesh, Bangladesh defense market, Ministry of Defense Bangladesh, defense suppliers Bangladesh, local agent services',
+  title: 'Vanguard Technology - Official DGDP Agent Bangladesh | Defence Procurement Services',
+  description: 'Expert DGDP agent services for international defence manufacturers. Navigate Bangladesh\'s $3.34B defence market with local expertise and government relationships.',
+  keywords: 'DGDP agent Bangladesh, defence procurement Bangladesh, Bangladesh defence market, Ministry of Defence Bangladesh, defence suppliers Bangladesh, local agent services',
   authors: [{ name: 'Vanguard Technology' }],
   creator: 'Vanguard Technology',
   publisher: 'Vanguard Technology',
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://vanguardtech.bd',
     title: 'Vanguard Technology - Official DGDP Agent Bangladesh',
-    description: 'Expert DGDP agent services for international defense manufacturers. Navigate Bangladesh\'s $3.34B defense market with certified local representation.',
+    description: 'Expert DGDP agent services for international defence manufacturers. Navigate Bangladesh\'s $3.34B defence market with certified local representation.',
     siteName: 'Vanguard Technology',
     images: [
       {
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Vanguard Technology - DGDP Agent Bangladesh',
-    description: 'Expert DGDP agent services for Bangladesh defense procurement',
+    description: 'Expert DGDP agent services for Bangladesh defence procurement',
     images: ['/images/vanguard-twitter-card.jpg'],
   },
   verification: {
@@ -66,7 +66,7 @@ export default function RootLayout({
               "alternateName": "VT DGDP Agent",
               "url": "https://vanguardtech.bd",
               "logo": "https://vanguardtech.bd/images/logo.png",
-              "description": "Official DGDP agent in Bangladesh providing expert defense procurement services for international manufacturers",
+              "description": "Official DGDP agent in Bangladesh providing expert defence procurement services for international manufacturers",
               "address": {
                 "@type": "PostalAddress",
                 "addressCountry": "BD",
@@ -87,7 +87,7 @@ export default function RootLayout({
               ],
               "foundingDate": "2010",
               "numberOfEmployees": "10-50",
-              "industry": "Defense Procurement Consulting",
+              "industry": "Defence Procurement Consulting",
               "serviceArea": {
                 "@type": "Country",
                 "name": "Bangladesh"
@@ -104,7 +104,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Service",
               "name": "DGDP Agent Services",
-              "description": "Complete DGDP registration and defense procurement services for international defense manufacturers",
+              "description": "Complete DGDP registration and defence procurement services for international defence manufacturers",
               "provider": {
                 "@type": "Organization",
                 "name": "Vanguard Technology"
@@ -113,7 +113,7 @@ export default function RootLayout({
                 "@type": "Country",
                 "name": "Bangladesh"
               },
-              "serviceType": "Defense Procurement Consulting",
+              "serviceType": "Defence Procurement Consulting",
               "category": "Business Consulting",
               "offers": {
                 "@type": "Offer",

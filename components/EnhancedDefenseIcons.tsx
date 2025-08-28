@@ -350,7 +350,7 @@ export const EnhancedRadarIcon = ({ size = 200, className = "", interactive = tr
       duration: 3,
       ease: "none",
       repeat: -1,
-      transformOrigin: "50% 50%"
+      transformOrigin: "0% 50%"
     })
     
     // Pulse rings
@@ -406,8 +406,8 @@ export const EnhancedRadarIcon = ({ size = 200, className = "", interactive = tr
         
         {/* Radar Sweep */}
         <g className="radar-sweep">
-          <line x1="100" y1="80" x2="160" y2="80" stroke="#c084fc" strokeWidth="2" opacity="0.6"/>
-          <circle cx="160" cy="80" r="3" fill="#e9d5ff" opacity="0.8"/>
+          <line x1="100" y1="80" x2="140" y2="80" stroke="#c084fc" strokeWidth="2" opacity="0.6"/>
+          <circle cx="140" cy="80" r="3" fill="#e9d5ff" opacity="0.8"/>
         </g>
         
         {/* Pulse Rings */}

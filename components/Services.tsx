@@ -40,7 +40,7 @@ export default function Services() {
     {
       number: "04",
       title: "Market Intelligence",
-      description: "Tender opportunities and regulatory updates in defense procurement.",
+      description: "Tender opportunities and regulatory updates in defence procurement.",
       features: ["Tender alerts", "Market analysis", "Intelligence"],
       icon: SimpleDataIcon,
       color: 'from-orange-600/20 to-orange-800/20',
@@ -50,7 +50,7 @@ export default function Services() {
 
   return (
     <section id="services" className="py-0 bg-gradient-to-b from-slate-900 via-gray-900 to-slate-900 relative overflow-hidden border-b-2 border-amber-500">
-      {/* Defense Pattern Overlay */}
+      {/* Defence Pattern Overlay */}
       <div className="absolute inset-0 hex-pattern"></div>
       <div className="w-full relative z-10 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -66,7 +66,7 @@ export default function Services() {
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
               DGDP procurement requires local representation. We bridge the gap between 
-              international manufacturers and Bangladesh's defense system.
+              international manufacturers and Bangladesh's defence system.
             </p>
           </div>
 

@@ -23,7 +23,7 @@ export default function CommunicationsPage() {
             <svg className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
-            Back to Defense Categories
+            Back to Defence Categories
           </Link>
           
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -137,7 +137,7 @@ export default function CommunicationsPage() {
                 {[
                   { name: "SLC-2 Radar", quantity: "2 systems", status: "Operational" },
                   { name: "Ground Master 400", quantity: "Planning", status: "Planned" },
-                  { name: "Air Defense Radar", quantity: "4 units", status: "Operational" },
+                  { name: "Air Defence Radar", quantity: "4 units", status: "Operational" },
                   { name: "Coastal Surveillance", quantity: "2 systems", status: "Modernizing" }
                 ].map((item, idx) => (
                   <div key={idx} className="flex justify-between items-center py-3 border-b border-gray-700 last:border-0">

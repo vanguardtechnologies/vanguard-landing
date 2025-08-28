@@ -55,7 +55,7 @@ export default function Process() {
 
   return (
     <section id="process" className="py-0 bg-gradient-to-b from-slate-900 via-gray-900 to-slate-900 relative overflow-hidden border-b-2 border-amber-500">
-      {/* Defense Pattern Overlay */}
+      {/* Defence Pattern Overlay */}
       <div className="absolute inset-0 hex-pattern"></div>
       <div className="absolute inset-0 radar-pattern"></div>
       <div className="w-full relative z-10 py-12">
@@ -71,7 +71,7 @@ export default function Process() {
             Your Path to DGDP Registration
           </h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            A proven 4-step process to establish your presence in Bangladesh's defense market 
+            A proven 4-step process to establish your presence in Bangladesh's defence market 
             with complete local support and transparency at every milestone.
           </p>
         </div>
@@ -266,7 +266,7 @@ export default function Process() {
             Ready to Start Your DGDP Journey?
           </h3>
           <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
-            Navigate Bangladesh defense procurement with established local representation. 
+            Navigate Bangladesh defence procurement with established local representation. 
             We handle the complexity while you focus on business growth.
           </p>
           

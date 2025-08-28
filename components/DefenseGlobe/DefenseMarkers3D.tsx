@@ -4,7 +4,7 @@ import React from 'react'
 import * as THREE from 'three'
 import { defensePartners } from './data/defensePartners'
 
-// Create 3D defense markers for partner countries
+// Create 3D defence markers for partner countries
 export function generateDefenseMarkers(time: number) {
   return defensePartners.map((partner, i) => ({
     id: partner.name,
@@ -20,7 +20,7 @@ export function generateDefenseMarkers(time: number) {
   }))
 }
 
-// Create Three.js object for defense marker
+// Create Three.js object for defence marker
 export function createDefenseMarkerObject(d: any) {
   const group = new THREE.Group()
   
@@ -112,7 +112,7 @@ export function createDefenseMarkerObject(d: any) {
   return group
 }
 
-// Update defense marker animation
+// Update defence marker animation
 export function updateDefenseMarkerObject(obj: THREE.Group, d: any, time: number) {
   if (!obj) return
   

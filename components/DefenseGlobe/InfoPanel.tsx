@@ -33,7 +33,7 @@ export default function InfoPanel() {
               <BarChart3 size={20} className="text-gray-900" />
             </div>
             <div>
-              <h3 className="text-white font-bold">Bangladesh Defense Market</h3>
+              <h3 className="text-white font-bold">Bangladesh Defence Market</h3>
               <p className="text-amber-400 text-xs">2024 Market Overview</p>
             </div>
           </div>
@@ -44,7 +44,7 @@ export default function InfoPanel() {
           {/* Market Size - Prominent Display */}
           <div className="text-center pb-3 border-b border-gray-800">
             <p className="text-3xl font-bold text-amber-400">{formatCurrency(marketStats.totalMarketSize)}</p>
-            <p className="text-sm text-gray-400 mt-1">Defense Market Size</p>
+            <p className="text-sm text-gray-400 mt-1">Defence Market Size</p>
           </div>
 
           {/* Key Metrics Grid */}
@@ -101,7 +101,7 @@ export default function InfoPanel() {
           <div className="bg-gray-800/50 rounded-md p-3 text-center">
             <p className="text-amber-400 font-semibold text-sm mb-1">DGDP Registration Required</p>
             <p className="text-xs text-gray-400">
-              Local agent mandatory for all international defense manufacturers
+              Local agent mandatory for all international defence manufacturers
             </p>
           </div>
 

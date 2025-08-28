@@ -29,18 +29,16 @@ export default function Contact() {
     setErrorMessage('')
     
     try {
-      // Using Formspree - replace 'YOUR_FORM_ID' with actual Formspree form ID
-      const response = await fetch('https://formspree.io/f/xdkooqrg', {
+      // Using our custom API endpoint
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          ...formData,
-          _subject: `DGDP Inquiry from ${formData.company}`,
-          _replyto: formData.email
-        })
+        body: JSON.stringify(formData)
       })
+      
+      const data = await response.json()
       
       if (response.ok) {
         setStatus('success')
@@ -52,17 +50,18 @@ export default function Contact() {
           message: ''
         })
       } else {
-        throw new Error('Form submission failed')
+        throw new Error(data.error || 'Form submission failed')
       }
     } catch (error) {
       setStatus('error')
-      setErrorMessage('Unable to send message. Please try again or contact us directly at dgdp@vanguardtech.bd')
+      const errorMsg = error instanceof Error ? error.message : 'Unknown error occurred'
+      setErrorMessage(`Unable to send message: ${errorMsg}. Please try again or contact us directly at defence@vguardtech.com`)
     }
   }
 
   return (
     <section id="contact" className="py-0 bg-gradient-to-b from-gray-900 via-slate-900 to-gray-900 relative overflow-hidden">
-      {/* Defense Pattern Overlay */}
+      {/* Defence Pattern Overlay */}
       <div className="absolute inset-0 hex-pattern"></div>
       <div className="absolute inset-0 tech-grid-glow"></div>
       <div className="w-full relative z-10 py-12 pb-16">
@@ -78,7 +77,7 @@ export default function Contact() {
               Connect with Professional DGDP Agents
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Transform your defense business in Bangladesh's <span className="font-bold text-amber-400">$3.34B market</span>. 
+              Transform your defence business in Bangladesh's <span className="font-bold text-amber-400">$3.34B market</span>. 
               Get direct access to certified DGDP agents with proven industry connections and local expertise.
             </p>
             
@@ -94,7 +93,7 @@ export default function Contact() {
                 <svg className="w-5 h-5 mr-2 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
-                Local Defense Expertise
+                Local Defence Expertise
               </div>
               <div className="flex items-center text-sm text-gray-400 font-bold uppercase tracking-wider">
                 <svg className="w-5 h-5 mr-2 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -111,10 +110,10 @@ export default function Contact() {
               
               <div className="mb-8">
                 <h3 className="text-2xl font-black text-gray-100 mb-3 uppercase tracking-wide">
-                  Ready to Enter Bangladesh Defense Market?
+                  Ready to Enter Bangladesh Defence Market?
                 </h3>
                 <p className="text-gray-400 leading-relaxed">
-                  Direct access to certified DGDP agents and defense procurement experts with 
+                  Direct access to certified DGDP agents and defence procurement experts with 
                   <span className="font-bold text-amber-400"> established industry connections</span>.
                 </p>
               </div>
@@ -131,7 +130,7 @@ export default function Contact() {
                   },
                   {
                     title: "Direct Communication",
-                    content: "dgdp@vanguardtech.bd\ninfo@vanguardtech.bd",
+                    content: "defence@vguardtech.com",
                     icon: "M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
                     color: "green", 
                     badge: "Professional"
@@ -221,7 +220,7 @@ export default function Contact() {
                     </svg>
                     <div>
                       <h4 className="text-green-400 font-bold">Message Sent Successfully!</h4>
-                      <p className="text-green-300 text-sm">Thank you for your inquiry. Our local DGDP agents will contact you within 24 hours.</p>
+                      <p className="text-green-300 text-sm">Thank you for your inquiry! You'll receive a confirmation email shortly, and our certified DGDP agents will contact you within 24 hours with personalized guidance.</p>
                     </div>
                   </div>
                 </div>
@@ -320,7 +319,7 @@ export default function Contact() {
                     value={formData.message}
                     onChange={handleChange}
                     className="w-full px-4 py-3 bg-gray-900/50 border-2 border-gray-700 rounded-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500/50 text-gray-100 placeholder-gray-500"
-                    placeholder="Describe your defense products, target markets, and how we can assist with DGDP registration and local representation..."
+                    placeholder="Describe your defence products, target markets, and how we can assist with DGDP registration and local representation..."
                   ></textarea>
                 </div>
 

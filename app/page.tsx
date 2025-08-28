@@ -18,10 +18,10 @@ export default function Home() {
         <section id="hero" aria-label="Hero section">
           <Hero />
         </section>
-        <section id="market-map" aria-label="Defense market opportunities">
+        <section id="market-map" aria-label="Defence market opportunities">
           <DefenseGlobe />
         </section>
-        <section id="products" aria-label="Defense products categories">
+        <section id="products" aria-label="Defence products categories">
           <DefenseProducts />
         </section>
         <section id="services" aria-label="DGDP services">

@@ -44,7 +44,7 @@ export const defensePartners: DefensePartner[] = [
     coordinates: [37.6173, 55.7558], // Moscow
     tier: 1,
     tradeVolume: 680,
-    equipment: ['Fighter Aircraft', 'Air Defense', 'Helicopters'],
+    equipment: ['Fighter Aircraft', 'Air Defence', 'Helicopters'],
     activeDeals: ['SU-30SME fighters', 'MiG-35 aircraft', 'Mi-171Sh helicopters'],
     color: '#1E40AF',
     flag: '🇷🇺'
@@ -69,7 +69,7 @@ export const defensePartners: DefensePartner[] = [
     tier: 1,
     tradeVolume: 280,
     equipment: ['Ammunition', 'Spare Parts', 'Small Arms'],
-    activeDeals: ['Arms & ammunition', 'Vehicle spares', 'Defense equipment'],
+    activeDeals: ['Arms & ammunition', 'Vehicle spares', 'Defence equipment'],
     color: '#EA580C',
     flag: '🇮🇳'
   },
@@ -94,8 +94,8 @@ export const defensePartners: DefensePartner[] = [
     coordinates: [2.3522, 48.8566], // Paris
     tier: 2,
     tradeVolume: 180,
-    equipment: ['Air Defense', 'Electronics', 'Naval'],
-    activeDeals: ['Thales systems', 'Defense electronics'],
+    equipment: ['Air Defence', 'Electronics', 'Naval'],
+    activeDeals: ['Thales systems', 'Defence electronics'],
     color: '#0891B2',
     flag: '🇫🇷'
   },
@@ -130,8 +130,8 @@ export const defensePartners: DefensePartner[] = [
     coordinates: [18.0686, 59.3293], // Stockholm
     tier: 2,
     tradeVolume: 160,
-    equipment: ['Fighter Aircraft', 'Defense Systems', 'Submarines'],
-    activeDeals: ['Saab defense systems', 'Gripen interest'],
+    equipment: ['Fighter Aircraft', 'Defence Systems', 'Submarines'],
+    activeDeals: ['Saab defence systems', 'Gripen interest'],
     color: '#0369A1',
     flag: '🇸🇪'
   },

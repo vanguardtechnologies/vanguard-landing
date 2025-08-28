@@ -38,14 +38,14 @@ export default function AirDefensePage() {
       description: "Comprehensive pilot training pipeline from basic to advanced"
     },
     {
-      category: "Air Defense & UAVs",
+      category: "Air Defence & UAVs",
       items: [
         { name: "Bayraktar TB2", quantity: "6 units", status: "Operational" },
         { name: "CS/AA3 Anti-Aircraft", quantity: "3 systems", status: "Delivered 2024" },
         { name: "MANPADS Program", quantity: "181 units planned", status: "Procurement" },
         { name: "MRSAM Program", quantity: "Tender issued", status: "Evaluation" }
       ],
-      description: "Integrated air defense systems and unmanned aerial platforms"
+      description: "Integrated air defence systems and unmanned aerial platforms"
     }
   ]
 
@@ -132,7 +132,7 @@ export default function AirDefensePage() {
                 <svg className="w-5 h-5 mr-2 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
-                Back to Defense Categories
+                Back to Defence Categories
               </Link>
 
               <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -145,20 +145,20 @@ export default function AirDefensePage() {
                   >
                     <div className="inline-flex items-center bg-gray-800/50 backdrop-blur-sm border-2 border-amber-500/50 text-amber-400 px-6 py-3 rounded-sm text-sm font-black uppercase tracking-wider mb-6 shadow-xl">
                       <span className="w-3 h-3 bg-amber-500 rounded-full mr-3 animate-pulse shadow-lg shadow-amber-500/50"></span>
-                      DGDP Category: Air Defense
+                      DGDP Category: Air Defence
                     </div>
                     
                     <h1 className="text-4xl lg:text-5xl font-black text-gray-100 mb-6 uppercase tracking-tight">
                       <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-amber-300">
-                        Air Defense
+                        Air Defence
                       </span>
                       <span className="block text-2xl lg:text-3xl mt-3 text-gray-300 font-bold">
-                        Aircraft & Defense Systems
+                        Aircraft & Defence Systems
                       </span>
                     </h1>
                     
                     <p className="text-lg text-gray-400 leading-relaxed mb-8">
-                      Comprehensive DGDP support for fighter aircraft, helicopters, UAVs, and air defense systems. 
+                      Comprehensive DGDP support for fighter aircraft, helicopters, UAVs, and air defence systems. 
                       Supporting Bangladesh Air Force's fleet of 188 aircraft including MiG-29 upgrades to BM standard 
                       and potential J-10C acquisition for enhanced air superiority capabilities.
                     </p>
@@ -381,7 +381,7 @@ export default function AirDefensePage() {
               <div className="relative z-10 text-center">
                 <div className="inline-flex items-center bg-gray-900/50 backdrop-blur-sm border-2 border-amber-500/50 text-amber-400 px-6 py-3 rounded-sm text-sm font-black uppercase tracking-wider mb-6 shadow-xl">
                   <span className="w-3 h-3 bg-amber-500 rounded-full mr-3 animate-pulse shadow-lg shadow-amber-500/50"></span>
-                  Ready to Register Your Air Defense Systems?
+                  Ready to Register Your Air Defence Systems?
                 </div>
                 
                 <h3 className="text-3xl font-black text-gray-100 mb-4 uppercase tracking-wide">

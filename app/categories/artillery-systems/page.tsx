@@ -132,7 +132,7 @@ export default function ArtillerySystemsPage() {
                 <svg className="w-5 h-5 mr-2 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
-                Back to Defense Categories
+                Back to Defence Categories
               </Link>
 
               <div className="grid lg:grid-cols-2 gap-12 items-center">

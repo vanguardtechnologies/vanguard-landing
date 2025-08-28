@@ -31,7 +31,7 @@ export default function Hero() {
     },
     {
       id: 'air-defense',
-      title: 'Air Defense',
+      title: 'Air Defence',
       icon: EnhancedJetIcon,
       color: 'from-sky-600 to-sky-800',
       delay: 0.3
@@ -69,10 +69,10 @@ export default function Hero() {
         <div className="absolute inset-0 tech-grid-glow"></div>
       <div className="w-full relative z-10 py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-12 gap-12 items-center">
+        <div className="grid lg:grid-cols-12 gap-8 items-center">
           
-          {/* Left Content (7 columns) */}
-          <div className="lg:col-span-7">
+          {/* Left Content (6 columns) */}
+          <div className="lg:col-span-6">
             {/* Trust Badge */}
             <div className="inline-flex items-center bg-gray-800/50 backdrop-blur-sm border-2 border-amber-500/50 text-amber-400 px-6 py-3 rounded-sm text-sm font-black uppercase tracking-wider mb-8 shadow-xl">
               <span className="w-3 h-3 bg-amber-500 rounded-full mr-3 animate-pulse shadow-lg shadow-amber-500/50"></span>
@@ -88,7 +88,7 @@ export default function Hero() {
             
             {/* Subheadline */}
             <p className="text-lg text-gray-400 mb-10 leading-relaxed">
-              Facilitating smooth market entry for international defense manufacturers through 
+              Facilitating smooth market entry for international defence manufacturers through 
               <span className="font-bold text-amber-400"> local expertise</span>, 
               regulatory compliance, and established industry connections.
             </p>
@@ -121,11 +121,11 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right Defense Categories Grid (5 columns) */}
-          <div className="lg:col-span-5">
+          {/* Right Defence Categories Grid (6 columns) */}
+          <div className="lg:col-span-6">
             <div className="relative">
-              {/* 3x2 Grid of Defense Categories */}
-              <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+              {/* 3x2 Grid of Defence Categories */}
+              <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
                 {defenseCategories.map((category, index) => {
                   const Icon = category.icon
                   return (
@@ -144,9 +144,9 @@ export default function Hero() {
                           <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-10 group-hover:opacity-20 transition-opacity`}></div>
                           
                           {/* Icon Container with Advanced SVG */}
-                          <div className="relative p-4 flex flex-col items-center justify-center h-56">
+                          <div className="relative p-3 flex flex-col items-center justify-center h-44">
                             <div className="mb-2 transition-all duration-300 transform group-hover:scale-105">
-                              <Icon size={150} className="drop-shadow-2xl" interactive={true} />
+                              <Icon size={120} className="drop-shadow-2xl" interactive={true} />
                             </div>
                             <h3 className="text-xs font-black text-gray-300 group-hover:text-white uppercase tracking-wider text-center transition-colors absolute bottom-2">
                               {category.title}
@@ -170,7 +170,7 @@ export default function Hero() {
 
         {/* Trust Indicators */}
         <div className="mt-20 pt-12 border-t-2 border-gray-700">
-          <p className="text-sm text-gray-300 text-center mb-6 uppercase tracking-widest font-semibold">Trusted by leading defense manufacturers worldwide</p>
+          <p className="text-sm text-gray-300 text-center mb-6 uppercase tracking-widest font-semibold">Trusted by leading defence manufacturers worldwide</p>
           <div className="flex flex-wrap justify-center items-center gap-8">
             <div className="flex items-center space-x-2 text-gray-400">
               <svg className="w-5 h-5 text-green-400 drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
