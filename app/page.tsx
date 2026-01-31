@@ -4,6 +4,7 @@ import DefenseGlobe from '@/components/DefenseGlobe'
 import DefenseProducts from '@/components/DefenseProducts'
 import Services from '@/components/Services'
 import Process from '@/components/Process'
+import Team from '@/components/Team'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 
@@ -29,6 +30,9 @@ export default function Home() {
         </section>
         <section id="process" aria-label="Process steps">
           <Process />
+        </section>
+        <section id="team" aria-label="Our team">
+          <Team />
         </section>
         <section id="contact" aria-label="Contact information">
           <Contact />

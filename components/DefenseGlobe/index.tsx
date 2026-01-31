@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react'
 import dynamic from 'next/dynamic'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 
 // Dynamic imports for client-side only rendering
@@ -47,10 +48,21 @@ export default function DefenseGlobe() {
   }, [])
 
   return (
-    <section 
+    <section
       ref={sectionRef}
       className="relative bg-gradient-to-b from-gray-900 via-slate-900 to-gray-900 border-b-2 border-amber-500 overflow-hidden"
     >
+      {/* Command Center Background Image */}
+      <div className="absolute inset-0">
+        <Image
+          src="/images/backgrounds/command-center.svg"
+          alt=""
+          fill
+          className="object-cover opacity-10"
+          sizes="100vw"
+        />
+      </div>
+
       {/* Hexagonal Pattern Overlay */}
       <div className="absolute inset-0 hex-pattern"></div>
 
@@ -60,28 +72,33 @@ export default function DefenseGlobe() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="inline-flex items-center bg-gray-800/50 backdrop-blur-sm border-2 border-amber-500/50 text-amber-400 px-6 py-3 rounded-sm text-sm font-black uppercase tracking-wider mb-3 shadow-xl"
+          className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-2 mb-3"
         >
-          <span className="w-3 h-3 bg-amber-500 rounded-full mr-3 animate-pulse shadow-lg shadow-amber-500/50"></span>
-          Global Defence Network
+          <span className="w-2 h-2 bg-amber-500 rounded-full animate-pulse" />
+          <span className="text-amber-400 text-sm font-medium tracking-wider uppercase">
+            Global Defence Network
+          </span>
         </motion.div>
-        
+
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-4xl md:text-5xl font-black text-gray-100 mb-2 uppercase tracking-tight"
+          className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-2"
         >
-          Bangladesh Defence Market Opportunities
+          Bangladesh Defence Market{' '}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">
+            Opportunities
+          </span>
         </motion.h2>
-        
+
         <motion.p
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-xl text-gray-400 max-w-3xl mx-auto"
         >
-          Connecting global defence manufacturers with Bangladesh's $4.3B defence modernization program.
+          Connecting global defence manufacturers with Bangladesh&apos;s $4.3B defence modernization program.
           Your gateway to Forces Goal 2030.
         </motion.p>
       </div>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="heroGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0A0E1A;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1A1F2E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#252B3B;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#heroGrad)"/>
+  <text x="960" y="480" font-family="Arial, sans-serif" font-size="48" fill="#FF9500" text-anchor="middle" font-weight="bold">HERO IMAGE</text>
+  <text x="960" y="550" font-family="Arial, sans-serif" font-size="24" fill="#9CA3AF" text-anchor="middle">Bangladesh Military / Defence Equipment</text>
+  <text x="960" y="600" font-family="Arial, sans-serif" font-size="18" fill="#6B7280" text-anchor="middle">Recommended: 1920x1080px</text>
+  <rect x="860" y="650" width="200" height="4" fill="#FF9500" opacity="0.5"/>
+</svg>

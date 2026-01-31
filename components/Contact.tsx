@@ -10,13 +10,14 @@ export default function Contact() {
     email: '',
     company: '',
     country: '',
+    inquiryType: 'partnership',
     message: ''
   })
   
   const [status, setStatus] = useState<FormStatus>('idle')
   const [errorMessage, setErrorMessage] = useState('')
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -47,6 +48,7 @@ export default function Contact() {
           email: '',
           company: '',
           country: '',
+          inquiryType: 'partnership',
           message: ''
         })
       } else {
@@ -305,6 +307,24 @@ export default function Contact() {
                       placeholder="Your country"
                     />
                   </div>
+                </div>
+
+                <div>
+                  <label htmlFor="inquiryType" className="block text-sm font-bold text-gray-100 mb-2 uppercase tracking-wider">
+                    Inquiry Type
+                  </label>
+                  <select
+                    id="inquiryType"
+                    name="inquiryType"
+                    value={formData.inquiryType}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-gray-900/50 border-2 border-gray-700 rounded-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500/50 text-gray-100"
+                  >
+                    <option value="partnership">Partnership Inquiry</option>
+                    <option value="information">General Information</option>
+                    <option value="meeting">Meeting Request</option>
+                    <option value="other">Other</option>
+                  </select>
                 </div>
 
                 <div>
