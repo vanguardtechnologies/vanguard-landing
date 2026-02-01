@@ -4,6 +4,18 @@ import nodemailer from 'nodemailer'
 // Rate limiting store (in production, use Redis or database)
 const rateLimitStore = new Map()
 
+// Simple HTML escaping to prevent XSS in email templates
+function escapeHtml(text: string): string {
+  const map: Record<string, string> = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  }
+  return text.replace(/[&<>"']/g, (char) => map[char] || char)
+}
+
 function rateLimit(ip: string) {
   const now = Date.now()
   const windowMs = 15 * 60 * 1000 // 15 minutes
@@ -44,7 +56,15 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json()
-    const { name, email, company, country, message } = body
+    const { name, email, company, country, inquiryType, message } = body
+
+    // Escape HTML for safe email rendering
+    const safeName = escapeHtml(name || '')
+    const safeEmail = escapeHtml(email || '')
+    const safeCompany = escapeHtml(company || '')
+    const safeCountry = escapeHtml(country || '')
+    const safeInquiryType = escapeHtml(inquiryType || 'General')
+    const safeMessage = escapeHtml(message || '')
 
     // Validate required fields
     if (!name || !email || !company || !country || !message) {
@@ -63,34 +83,30 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    // Validate email configuration
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+      console.error('Email configuration missing: EMAIL_USER or EMAIL_PASS not set')
+      return NextResponse.json(
+        { error: 'Email service not configured. Please contact us directly at defence@vguardtech.com' },
+        { status: 503 }
+      )
+    }
+
     // Create transporter - supports both cPanel and Gmail
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST || 'smtp.gmail.com',
-      port: parseInt(process.env.SMTP_PORT || '587'),
-      secure: process.env.SMTP_SECURE === 'true', // true for 465, false for 587
+      port: parseInt(process.env.SMTP_PORT || '465'),
+      secure: process.env.SMTP_SECURE !== 'false', // true for 465 (default), false for 587
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
       },
       // Additional options for cPanel compatibility
-      authMethod: 'LOGIN', // Try LOGIN instead of PLAIN
       tls: {
-        rejectUnauthorized: false // Accept self-signed certificates
+        rejectUnauthorized: false // Accept self-signed certificates common on shared hosting
       },
-      debug: true, // Enable debug logging
-      logger: true, // Enable logging
       // Fallback to Gmail service if no SMTP_HOST is provided
       ...(process.env.SMTP_HOST ? {} : { service: 'gmail' }),
-    })
-
-    // Add connection verification
-    console.log('SMTP Config:', {
-      host: process.env.SMTP_HOST,
-      port: process.env.SMTP_PORT,
-      secure: process.env.SMTP_SECURE,
-      user: process.env.EMAIL_USER,
-      passLength: process.env.EMAIL_PASS?.length, // Show length to verify it's being read
-      passFirstChar: process.env.EMAIL_PASS?.charAt(0), // Show first character for verification
     })
 
     // Email content for the business
@@ -107,26 +123,30 @@ export async function POST(request: NextRequest) {
             <table style="width: 100%; color: #e5e7eb;">
               <tr>
                 <td style="padding: 8px 0; font-weight: bold; color: #ff9500; width: 120px;">Name:</td>
-                <td style="padding: 8px 0;">${name}</td>
+                <td style="padding: 8px 0;">${safeName}</td>
               </tr>
               <tr>
                 <td style="padding: 8px 0; font-weight: bold; color: #ff9500;">Email:</td>
-                <td style="padding: 8px 0;"><a href="mailto:${email}" style="color: #60a5fa; text-decoration: none;">${email}</a></td>
+                <td style="padding: 8px 0;"><a href="mailto:${safeEmail}" style="color: #60a5fa; text-decoration: none;">${safeEmail}</a></td>
               </tr>
               <tr>
                 <td style="padding: 8px 0; font-weight: bold; color: #ff9500;">Company:</td>
-                <td style="padding: 8px 0;">${company}</td>
+                <td style="padding: 8px 0;">${safeCompany}</td>
               </tr>
               <tr>
                 <td style="padding: 8px 0; font-weight: bold; color: #ff9500;">Country:</td>
-                <td style="padding: 8px 0;">${country}</td>
+                <td style="padding: 8px 0;">${safeCountry}</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0; font-weight: bold; color: #ff9500;">Inquiry:</td>
+                <td style="padding: 8px 0;">${safeInquiryType}</td>
               </tr>
             </table>
           </div>
           
           <div style="background-color: #374151; padding: 20px; border-radius: 6px;">
             <h3 style="color: #ff9500; margin-top: 0; font-size: 16px;">Message:</h3>
-            <p style="color: #e5e7eb; line-height: 1.6; margin: 0; white-space: pre-wrap;">${message}</p>
+            <p style="color: #e5e7eb; line-height: 1.6; margin: 0; white-space: pre-wrap;">${safeMessage}</p>
           </div>
           
           <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #4b5563; text-align: center;">
@@ -151,7 +171,7 @@ export async function POST(request: NextRequest) {
           <div style="background-color: #374151; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
             <h2 style="color: #ff9500; margin-top: 0; font-size: 18px;">Thank You for Your Inquiry</h2>
             <p style="color: #e5e7eb; line-height: 1.6; margin: 0;">
-              Dear ${name},<br/><br/>
+              Dear ${safeName},<br/><br/>
               Thank you for contacting Vanguard Technology regarding DGDP services in Bangladesh. 
               We have received your inquiry and our certified DGDP agents will review your requirements.
             </p>
@@ -203,26 +223,33 @@ export async function POST(request: NextRequest) {
       </div>
     `
 
+    // Verify SMTP connection before sending
+    try {
+      await transporter.verify()
+    } catch (verifyError) {
+      console.error('SMTP verification failed:', verifyError)
+      return NextResponse.json(
+        { error: 'Email server connection failed. Please try again later or contact us directly at defence@vguardtech.com' },
+        { status: 503 }
+      )
+    }
+
     // Send email to business
-    console.log('Sending business notification email to: defence@vguardtech.com')
     await transporter.sendMail({
       from: `"Vanguard Technology Website" <${process.env.EMAIL_USER}>`,
       to: 'defence@vguardtech.com',
-      subject: `🛡️ New DGDP Inquiry from ${company} (${country})`,
+      subject: `New DGDP Inquiry from ${safeCompany} (${safeCountry})`,
       html: businessEmailHtml,
-      replyTo: email,
+      replyTo: email, // Use original email for replyTo functionality
     })
-    console.log('✅ Business email sent successfully')
 
     // Send auto-reply to customer
-    console.log(`Sending auto-reply to customer: ${email}`)
     await transporter.sendMail({
       from: `"Vanguard Technology" <${process.env.EMAIL_USER}>`,
       to: email,
-      subject: '✅ Your DGDP Inquiry Received - Vanguard Technology',
+      subject: 'Your DGDP Inquiry Received - Vanguard Technology',
       html: customerEmailHtml,
     })
-    console.log('✅ Customer auto-reply sent successfully')
 
     return NextResponse.json(
       { message: 'Email sent successfully' },
