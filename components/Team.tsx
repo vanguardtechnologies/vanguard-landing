@@ -2,7 +2,8 @@
 
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { LinkedinIcon } from 'lucide-react'
+import { Linkedin } from 'lucide-react'
+import { GoldIcon } from './icons/GoldIcon'
 
 const teamMembers = [
   {
@@ -41,11 +42,20 @@ const teamMembers = [
 
 export default function Team() {
   return (
-    <section id="team" className="relative py-24 bg-gradient-to-b from-gray-900 via-slate-900 to-gray-900 border-b-2 border-amber-500">
-      {/* Background patterns */}
-      <div className="absolute inset-0 hex-pattern opacity-[0.03]" />
+    <section id="team" className="relative py-24 bg-navy-900 border-b border-gold-500/20">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-[0.02]">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `linear-gradient(var(--gold-500) 1px, transparent 1px),
+                             linear-gradient(90deg, var(--gold-500) 1px, transparent 1px)`,
+            backgroundSize: '50px 50px'
+          }}
+        />
+      </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -53,19 +63,19 @@ export default function Team() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-2 mb-6">
-            <span className="w-2 h-2 bg-amber-500 rounded-full animate-pulse" />
-            <span className="text-amber-400 text-sm font-medium tracking-wider uppercase">
+          <div className="inline-flex items-center gap-2 bg-gold-500/10 border border-gold-500/30 px-4 py-2 mb-6">
+            <span className="w-2 h-2 bg-gold-500 rounded-full animate-pulse" />
+            <span className="text-gold-500 text-sm font-medium tracking-wider uppercase">
               Our Leadership
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-steel-100 mb-4">
             Meet Our{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">
+            <span className="text-gradient-gold">
               Team
             </span>
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <p className="text-steel-400 max-w-2xl mx-auto text-lg">
             Dedicated professionals with decades of combined experience in Bangladesh&apos;s defence sector,
             committed to driving your market entry success.
           </p>
@@ -78,39 +88,48 @@ export default function Team() {
               key={member.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
               viewport={{ once: true }}
-              className="group text-center"
             >
-              {/* Photo Container */}
-              <div className="relative mx-auto mb-6 w-48 h-48">
-                <div className="absolute inset-0 rounded-full border-2 border-amber-500/30 group-hover:border-amber-500 transition-colors duration-300" />
-                <div className="absolute inset-1 rounded-full overflow-hidden bg-gray-800">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    className="object-cover"
-                    sizes="192px"
-                  />
-                </div>
-                {/* Hover glow effect */}
-                <div className="absolute inset-0 rounded-full bg-amber-500/0 group-hover:bg-amber-500/10 transition-colors duration-300" />
-              </div>
-
-              {/* Info */}
-              <h3 className="text-xl font-bold text-white mb-1">{member.name}</h3>
-              <p className="text-amber-400 font-medium mb-3">{member.role}</p>
-              <p className="text-gray-400 text-sm mb-4 px-4">{member.bio}</p>
-
-              {/* LinkedIn */}
-              <a
-                href={member.linkedin}
-                className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 border border-gray-700 hover:border-amber-500 hover:bg-amber-500/10 transition-colors duration-300"
-                aria-label={`${member.name}'s LinkedIn profile`}
+              {/* Card Container */}
+              <div
+                className="group bg-navy-800 border border-navy-600 hover:border-gold-500 transition-all duration-300 p-6"
+                style={{
+                  clipPath: 'polygon(16px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 16px)'
+                }}
               >
-                <LinkedinIcon className="w-5 h-5 text-gray-400 hover:text-amber-400 transition-colors" />
-              </a>
+                {/* Photo Container */}
+                <div className="relative mx-auto mb-6 w-32 h-32">
+                  <div className="absolute inset-0 rounded-full border-2 border-gold-500/50 group-hover:border-gold-500 transition-colors duration-300" />
+                  <div className="absolute inset-1 rounded-full overflow-hidden bg-navy-700">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      className="object-cover"
+                      sizes="128px"
+                    />
+                  </div>
+                  {/* Hover glow effect */}
+                  <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-gold-glow" />
+                </div>
+
+                {/* Info */}
+                <div className="text-center">
+                  <h3 className="text-xl font-bold text-steel-100 mb-1">{member.name}</h3>
+                  <p className="text-gold-500 font-medium mb-3">{member.role}</p>
+                  <p className="text-steel-400 text-sm mb-5">{member.bio}</p>
+
+                  {/* LinkedIn */}
+                  <a
+                    href={member.linkedin}
+                    className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-navy-700 border border-navy-500 hover:border-gold-500 hover:bg-gold-500/10 transition-all duration-300"
+                    aria-label={`${member.name}'s LinkedIn profile`}
+                  >
+                    <GoldIcon icon={Linkedin} size={18} strokeWidth={1.5} />
+                  </a>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>

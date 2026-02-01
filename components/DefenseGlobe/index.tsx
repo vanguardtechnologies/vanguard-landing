@@ -11,10 +11,10 @@ const GlobeComponent = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="h-[900px] bg-gradient-to-br from-slate-800 via-gray-800 to-slate-900 rounded-lg flex items-center justify-center">
+      <div className="h-[900px] bg-navy-900 flex items-center justify-center">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-amber-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-amber-400 text-lg font-bold uppercase tracking-wider">Loading Defence Network</p>
+          <div className="w-16 h-16 border-4 border-gold-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-gold-400 text-lg font-bold uppercase tracking-wider">Loading Defence Network</p>
         </div>
       </div>
     )
@@ -50,7 +50,7 @@ export default function DefenseGlobe() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-gradient-to-b from-gray-900 via-slate-900 to-gray-900 border-b-2 border-amber-500 overflow-hidden"
+      className="relative bg-navy-900 border-b border-gold-500/20 overflow-hidden"
     >
       {/* Command Center Background Image */}
       <div className="absolute inset-0">
@@ -72,10 +72,10 @@ export default function DefenseGlobe() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-2 mb-3"
+          className="inline-flex items-center gap-2 bg-gold-500/10 border border-gold-500/30 px-4 py-2 mb-3"
         >
-          <span className="w-2 h-2 bg-amber-500 rounded-full animate-pulse" />
-          <span className="text-amber-400 text-sm font-medium tracking-wider uppercase">
+          <span className="w-2 h-2 bg-gold-500 rounded-full animate-pulse" />
+          <span className="text-gold-500 text-sm font-medium tracking-wider uppercase">
             Global Defence Network
           </span>
         </motion.div>
@@ -84,10 +84,10 @@ export default function DefenseGlobe() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-2"
+          className="text-3xl sm:text-4xl lg:text-5xl font-bold text-steel-100 mb-2"
         >
           Bangladesh Defence Market{' '}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">
+          <span className="text-gradient-gold">
             Opportunities
           </span>
         </motion.h2>
@@ -96,7 +96,7 @@ export default function DefenseGlobe() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-xl text-gray-400 max-w-3xl mx-auto"
+          className="text-xl text-steel-400 max-w-3xl mx-auto"
         >
           Connecting global defence manufacturers with Bangladesh&apos;s $4.3B defence modernization program.
           Your gateway to Forces Goal 2030.

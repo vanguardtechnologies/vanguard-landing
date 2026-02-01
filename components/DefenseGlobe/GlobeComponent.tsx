@@ -12,7 +12,6 @@ export default function GlobeComponent({ isVisible = false }: GlobeComponentProp
   const globeEl = useRef<any>(null)
   const [globeDimensions, setGlobeDimensions] = useState({ width: 1200, height: 900 })
   const [isMounted, setIsMounted] = useState(false)
-  const [time, setTime] = useState(0)
   const [currentStatIndex, setCurrentStatIndex] = useState(0)
   const [hoveredArc, setHoveredArc] = useState<any>(null)
 
@@ -34,7 +33,7 @@ export default function GlobeComponent({ isVisible = false }: GlobeComponentProp
         lat: 23.8103,
         lng: 90.4125,
         size: 3.5,  // Maximum prominence
-        color: '#FFD700',  // Golden color
+        color: '#C9A961',  // Gold-500 primary
         label: 'BANGLADESH',
         pulseDelay: 0,
         isHub: true,
@@ -45,7 +44,7 @@ export default function GlobeComponent({ isVisible = false }: GlobeComponentProp
         lat: partner.coordinates[1],
         lng: partner.coordinates[0],
         size: partner.tier === 1 ? 2.0 : 1.5,  // Large prominent points
-        color: partner.tier === 1 ? '#FFC800' : '#00D4FF',  // Vibrant colors
+        color: partner.tier === 1 ? '#D4B978' : '#E5D4A1',  // Gold-400 tier 1, Gold-300 tier 2
         label: partner.name.toUpperCase(),
         pulseDelay: calculatePulseDelay(partner.coordinates[1], partner.coordinates[0]),
         tier: partner.tier,
@@ -69,7 +68,7 @@ export default function GlobeComponent({ isVisible = false }: GlobeComponentProp
 
   // Optimized arcs with distance-based altitude for visibility
   const arcsData = useMemo(() => {
-    return defensePartners.map((partner, i) => {
+    return defensePartners.map((partner) => {
       // Calculate distance from Bangladesh to partner
       const distance = calculateDistance(
         23.8103, 90.4125,  // Bangladesh
@@ -95,9 +94,9 @@ export default function GlobeComponent({ isVisible = false }: GlobeComponentProp
         startLng: 90.4125,
         endLat: partner.coordinates[1],
         endLng: partner.coordinates[0],
-        color: partner.tier === 1 
-          ? ['rgba(255, 215, 0, 1)', 'rgba(255, 165, 0, 1)']  // Gold gradient
-          : ['rgba(0, 150, 255, 1)', 'rgba(0, 200, 255, 1)'], // Blue gradient
+        color: partner.tier === 1
+          ? ['rgba(201, 169, 97, 1)', 'rgba(229, 212, 161, 1)']  // Gold-500 to Gold-300
+          : ['rgba(212, 185, 120, 0.8)', 'rgba(229, 212, 161, 0.6)'], // Gold-400 to Gold-300 (muted)
         stroke: partner.tier === 1 ? 0.4 : 0.3,  // Thinner, more elegant strokes
         dashLength: partner.tier === 1 ? 0.1 : 0.08,  // Shorter dashes for thin arcs
         dashGap: partner.tier === 1 ? 0.03 : 0.04,    // Proportional gaps
@@ -167,29 +166,6 @@ export default function GlobeComponent({ isVisible = false }: GlobeComponentProp
     ]
   }, [currentStatIndex])
 
-  // Optimized animation loop for 60 FPS
-  useEffect(() => {
-    if (!isMounted || !isVisible) return
-    
-    let animationId: number
-    let lastTime = 0
-    const targetFPS = 60
-    const frameInterval = 1000 / targetFPS
-    
-    const animate = (currentTime: number) => {
-      if (currentTime - lastTime >= frameInterval) {
-        setTime(currentTime * 0.001)
-        lastTime = currentTime
-      }
-      animationId = requestAnimationFrame(animate)
-    }
-    animate(0)
-    
-    return () => {
-      if (animationId) cancelAnimationFrame(animationId)
-    }
-  }, [isMounted, isVisible])
-  
   // Rotate market stats every 3 seconds
   useEffect(() => {
     if (!isMounted) return
@@ -271,8 +247,8 @@ export default function GlobeComponent({ isVisible = false }: GlobeComponentProp
     return (
       <div className="flex items-center justify-center h-[900px]">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-amber-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-amber-400 text-lg font-bold uppercase tracking-wider">Initializing Defence Network</p>
+          <div className="w-16 h-16 border-4 border-gold-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-gold-400 text-lg font-bold uppercase tracking-wider">Initializing Defence Network</p>
         </div>
       </div>
     )
@@ -310,10 +286,10 @@ export default function GlobeComponent({ isVisible = false }: GlobeComponentProp
           // Disable any automatic country labeling
           labelsData={[]}
           
-          // Enhanced atmosphere with refined glow
+          // Enhanced atmosphere with subtle gold glow
           showAtmosphere={true}
-          atmosphereColor="rgba(255, 149, 0, 0.5)"  // Amber with controlled opacity
-          atmosphereAltitude={0.2}  // Slightly tighter glow
+          atmosphereColor="rgba(201, 169, 97, 0.15)"  // Gold-500 with subtle opacity
+          atmosphereAltitude={0.18}  // Slightly tighter glow
           
           // Points layer with enhanced glow effect and hover tooltips
           pointsData={pointsData}
@@ -330,8 +306,8 @@ export default function GlobeComponent({ isVisible = false }: GlobeComponentProp
           
           // Arcs layer with gradients and hover effects
           arcsData={arcsData}
-          arcColor={(d: any) => hoveredArc === d ? 
-            (d.tier === 1 ? ['rgba(255, 255, 0, 1)', 'rgba(255, 215, 0, 1)'] : ['rgba(0, 220, 255, 1)', 'rgba(0, 255, 255, 1)']) :
+          arcColor={(d: any) => hoveredArc === d ?
+            (d.tier === 1 ? ['rgba(229, 212, 161, 1)', 'rgba(240, 230, 200, 1)'] : ['rgba(212, 185, 120, 1)', 'rgba(229, 212, 161, 1)']) :
             d.color
           }
           arcStroke={(d: any) => hoveredArc === d ? (d.stroke * 1.5) : d.stroke}
@@ -351,9 +327,9 @@ export default function GlobeComponent({ isVisible = false }: GlobeComponentProp
           // Enhanced thick visible propagating rings
           ringsData={ringsData}
           ringColor={() => (t: number) => {
-            // Smooth opacity transition
-            const opacity = 0.6 * (1 - t)
-            return `rgba(255, 195, 0, ${opacity})`
+            // Smooth opacity transition with gold color
+            const opacity = 0.5 * (1 - t)
+            return `rgba(201, 169, 97, ${opacity})`  // Gold-500
           }}
           ringMaxRadius="maxR"
           ringPropagationSpeed="propagationSpeed"
@@ -367,17 +343,17 @@ export default function GlobeComponent({ isVisible = false }: GlobeComponentProp
             el.innerHTML = `
               <div class="flex flex-col items-center pointer-events-none" style="transform: translateZ(0); will-change: transform;">
                 <!-- Label Box Above -->
-                <div class="bg-gray-900/95 px-1 py-0.5 rounded border-2 ${d.isHub ? 'border-amber-500' : d.isActive ? 'border-amber-400' : 'border-blue-400'} mb-2" style="backdrop-filter: blur(4px); box-shadow: 0 4px 8px rgba(0,0,0,0.4);">
-                  <div class="text-white font-bold text-[11px] whitespace-nowrap text-center" style="text-shadow: 0 1px 2px rgba(0,0,0,0.6);">
+                <div class="px-1 py-0.5 rounded mb-2" style="background: rgba(10, 22, 40, 0.95); backdrop-filter: blur(4px); box-shadow: 0 4px 8px rgba(0,0,0,0.4); border: 2px solid ${d.isHub ? '#C9A961' : d.isActive ? '#D4B978' : '#E5D4A1'};">
+                  <div class="font-bold text-[11px] whitespace-nowrap text-center" style="color: #E2E8F0; text-shadow: 0 1px 2px rgba(0,0,0,0.6);">
                     ${d.label}
                   </div>
-                  ${d.isHub ? 
-                    `<div class="text-amber-400 text-[9px] text-center font-semibold">
+                  ${d.isHub ?
+                    `<div class="text-[9px] text-center font-semibold" style="color: #D4B978;">
                       Defence Hub
                     </div>
                     <div class="mt-0.5 text-center animate-pulse">
-                      <div class="text-amber-300 text-sm font-black">${d.marketStat.value}</div>
-                      <div class="text-amber-400 text-[9px]">${d.marketStat.label}</div>
+                      <div class="text-sm font-black" style="color: #E5D4A1;">${d.marketStat.value}</div>
+                      <div class="text-[9px]" style="color: #D4B978;">${d.marketStat.label}</div>
                     </div>` : ''}
                 </div>
                 <!-- Flag Below -->
@@ -419,40 +395,40 @@ export default function GlobeComponent({ isVisible = false }: GlobeComponentProp
 
       {/* Info Panel */}
       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-30 w-full max-w-5xl px-4">
-        <div className="bg-gray-900/95 backdrop-blur-sm rounded-lg border border-amber-500/30 shadow-2xl">
+        <div className="bg-navy-800/95 backdrop-blur-sm border border-gold-500/30 shadow-2xl" style={{ clipPath: 'polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px)' }}>
           <div className="flex items-center justify-between p-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-amber-500 rounded-md flex items-center justify-center">
-                <svg className="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-10 h-10 bg-gold-500 flex items-center justify-center" style={{ clipPath: 'polygon(4px 0, 100% 0, calc(100% - 4px) 100%, 0 100%)' }}>
+                <svg className="w-5 h-5 text-navy-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
               </div>
               <div>
-                <h3 className="text-white font-bold text-sm">Bangladesh Defence Market</h3>
-                <p className="text-amber-400 text-xs">Global Defence Network Visualization</p>
+                <h3 className="text-steel-100 font-bold text-sm">Bangladesh Defence Market</h3>
+                <p className="text-gold-500 text-xs">Global Defence Network Visualization</p>
               </div>
             </div>
 
             <div className="flex gap-6">
               <div className="text-center">
-                <p className="text-2xl font-bold text-amber-400">$3.34B</p>
-                <p className="text-xs text-gray-400">Defence Budget</p>
+                <p className="text-2xl font-bold text-gold-500">$3.34B</p>
+                <p className="text-xs text-steel-400">Defence Budget</p>
               </div>
               <div className="text-center">
-                <p className="text-2xl font-bold text-white">$462B</p>
-                <p className="text-xs text-gray-400">GDP 2025</p>
+                <p className="text-2xl font-bold text-steel-100">$462B</p>
+                <p className="text-xs text-steel-400">GDP 2025</p>
               </div>
               <div className="text-center">
-                <p className="text-2xl font-bold text-white">1.02%</p>
-                <p className="text-xs text-gray-400">Defence/GDP</p>
+                <p className="text-2xl font-bold text-steel-100">1.02%</p>
+                <p className="text-xs text-steel-400">Defence/GDP</p>
               </div>
               <div className="text-center">
-                <p className="text-2xl font-bold text-amber-400">2030</p>
-                <p className="text-xs text-gray-400">Forces Goal</p>
+                <p className="text-2xl font-bold text-gold-500">2030</p>
+                <p className="text-xs text-steel-400">Forces Goal</p>
               </div>
             </div>
 
-            <button className="bg-gradient-to-r from-amber-500 to-amber-600 text-gray-900 font-bold px-6 py-2 rounded-md hover:from-amber-600 hover:to-amber-700 transition-all transform hover:scale-105 text-sm">
+            <button className="bg-gold-500 text-navy-900 font-bold px-6 py-2 hover:bg-gold-400 transition-all transform hover:scale-105 text-sm shadow-gold-button hover:shadow-gold-button-hover" style={{ clipPath: 'polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%)' }}>
               Partner with Vanguard
             </button>
           </div>

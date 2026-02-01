@@ -3,6 +3,8 @@
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { Building2, MapPin, Clock, Handshake } from 'lucide-react'
+import { GoldIcon } from './icons/GoldIcon'
 
 export default function Hero() {
   return (
@@ -24,8 +26,13 @@ export default function Hero() {
         />
       </motion.div>
 
-      {/* Gradient Overlay - Left dark to right transparent */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0A0E1A]/95 via-[#0A0E1A]/70 to-transparent" />
+      {/* Gradient Overlay - Navy colors */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: 'linear-gradient(to right, rgba(5, 10, 20, 0.95) 0%, rgba(5, 10, 20, 0.7) 50%, rgba(5, 10, 20, 0.4) 100%)'
+        }}
+      />
 
       {/* Content Container */}
       <div className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -36,12 +43,15 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-2 mb-6 w-fit"
+            className="mb-6"
           >
-            <span className="w-2 h-2 bg-amber-500 rounded-full animate-pulse" />
-            <span className="text-amber-400 text-sm font-medium tracking-wider uppercase">
-              DGDP Certified Partner
-            </span>
+            <div className="w-16 h-0.5 bg-gold-500 mb-4" />
+            <div className="inline-flex items-center gap-2 bg-gold-500/10 border border-gold-500/30 px-4 py-2">
+              <span className="w-2 h-2 bg-gold-500 rounded-full animate-pulse" />
+              <span className="text-gold-500 text-sm font-medium tracking-wider uppercase">
+                DGDP Certified Partner
+              </span>
+            </div>
           </motion.div>
 
           {/* Main Headline */}
@@ -49,10 +59,10 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6"
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-steel-100 leading-tight mb-6"
           >
             Enter Bangladesh&apos;s{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">
+            <span className="text-gradient-gold">
               Defence Market
             </span>{' '}
             Today
@@ -63,7 +73,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="text-lg sm:text-xl text-gray-300 mb-8 max-w-xl"
+            className="text-lg sm:text-xl text-steel-400 mb-8 max-w-xl"
           >
             Expert DGDP registration, industry connections, and 24/7 local support
             for international defence manufacturers.
@@ -78,13 +88,19 @@ export default function Hero() {
           >
             <Link
               href="#contact"
-              className="px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-600 text-black font-semibold rounded-sm hover:from-amber-400 hover:to-amber-500 transition-all duration-300 shadow-lg shadow-amber-500/25"
+              className="px-8 py-4 bg-gold-500 text-navy-900 font-semibold uppercase tracking-wider hover:bg-gold-400 transition-all duration-300 shadow-gold-button hover:shadow-gold-button-hover"
+              style={{
+                clipPath: 'polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%)'
+              }}
             >
-              Start Your DGDP Journey
+              Start Your Journey
             </Link>
             <Link
               href="#products"
-              className="px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-sm hover:border-amber-500 hover:text-amber-400 transition-all duration-300"
+              className="px-8 py-4 border-2 border-gold-500 text-gold-500 font-semibold uppercase tracking-wider hover:bg-gold-500/10 hover:text-gold-400 transition-all duration-300"
+              style={{
+                clipPath: 'polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%)'
+              }}
             >
               Explore Capabilities
             </Link>
@@ -95,22 +111,22 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
-            className="flex flex-wrap gap-6 text-sm text-gray-400"
+            className="flex flex-wrap gap-6 text-sm text-steel-300"
           >
             <div className="flex items-center gap-2">
-              <span className="text-amber-500">🏛</span>
+              <GoldIcon icon={Building2} size={18} strokeWidth={1.5} />
               <span>DGDP Certified</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-amber-500">📍</span>
+              <GoldIcon icon={MapPin} size={18} strokeWidth={1.5} />
               <span>Dhaka Based</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-amber-500">⏰</span>
+              <GoldIcon icon={Clock} size={18} strokeWidth={1.5} />
               <span>24/7 Support</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-amber-500">🤝</span>
+              <GoldIcon icon={Handshake} size={18} strokeWidth={1.5} />
               <span>15+ Years Experience</span>
             </div>
           </motion.div>
@@ -127,9 +143,9 @@ export default function Hero() {
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
-          className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2"
+          className="w-6 h-10 border-2 border-steel-400/30 rounded-full flex justify-center pt-2"
         >
-          <div className="w-1 h-2 bg-amber-500 rounded-full" />
+          <div className="w-1 h-2 bg-gold-500 rounded-full" />
         </motion.div>
       </motion.div>
     </section>

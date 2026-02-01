@@ -1,12 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { 
-  SimpleOfficeIcon,
-  SimpleDocumentIcon,
-  SimpleNetworkIcon,
-  SimpleDataIcon
-} from './SimpleServiceIcons'
+import { MapPin, FileText, Users, TrendingUp, Check } from 'lucide-react'
+import { GoldIcon } from './icons/GoldIcon'
 
 export default function Services() {
   const services = [
@@ -15,160 +11,170 @@ export default function Services() {
       title: "Local Representation",
       description: "Authorized agent for DGDP proceedings with physical presence in Dhaka.",
       features: ["Agent agreement", "Dhaka office", "Meeting support"],
-      icon: SimpleOfficeIcon,
-      color: 'from-blue-600/20 to-blue-800/20',
-      iconColor: 'text-blue-400'
+      icon: MapPin,
     },
     {
       number: "02",
       title: "Documentation Support",
       description: "Complete DGDP documentation including Bengali translations and compliance.",
       features: ["Bengali docs", "Compliance cert", "Translations"],
-      icon: SimpleDocumentIcon,
-      color: 'from-green-600/20 to-green-800/20',
-      iconColor: 'text-green-400'
+      icon: FileText,
     },
     {
       number: "03",
       title: "Industry Liaison",
       description: "Established relationships with DGDP personnel for smooth processing.",
       features: ["DGDP relations", "Industry network", "Communication"],
-      icon: SimpleNetworkIcon,
-      color: 'from-purple-600/20 to-purple-800/20',
-      iconColor: 'text-purple-400'
+      icon: Users,
     },
     {
       number: "04",
       title: "Market Intelligence",
       description: "Tender opportunities and regulatory updates in defence procurement.",
       features: ["Tender alerts", "Market analysis", "Intelligence"],
-      icon: SimpleDataIcon,
-      color: 'from-orange-600/20 to-orange-800/20',
-      iconColor: 'text-orange-400'
+      icon: TrendingUp,
     }
   ]
 
   return (
-    <section id="services" className="py-0 bg-gradient-to-b from-slate-900 via-gray-900 to-slate-900 relative overflow-hidden border-b-2 border-amber-500">
-      {/* Defence Pattern Overlay */}
-      <div className="absolute inset-0 hex-pattern"></div>
-      <div className="w-full relative z-10 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Header */}
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center bg-gray-800/50 backdrop-blur-sm border-2 border-amber-500/50 text-amber-400 px-6 py-3 rounded-sm text-sm font-black uppercase tracking-wider mb-6 shadow-xl">
-              <span className="w-3 h-3 bg-amber-500 rounded-full mr-3 animate-pulse shadow-lg shadow-amber-500/50"></span>
+    <section id="services" className="py-24 bg-navy-900 relative overflow-hidden border-b border-gold-500/20">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-[0.02]">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `linear-gradient(var(--gold-500) 1px, transparent 1px),
+                             linear-gradient(90deg, var(--gold-500) 1px, transparent 1px)`,
+            backgroundSize: '50px 50px'
+          }}
+        />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <div className="inline-flex items-center gap-2 bg-gold-500/10 border border-gold-500/30 px-4 py-2 mb-6">
+            <span className="w-2 h-2 bg-gold-500 rounded-full animate-pulse" />
+            <span className="text-gold-500 text-sm font-medium tracking-wider uppercase">
               Essential Local Services
-            </div>
-            
-            <h2 className="text-4xl md:text-5xl font-black text-gray-100 mb-4 uppercase tracking-tight">
-              Strategic Local Representation
-            </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              DGDP procurement requires local representation. We bridge the gap between 
-              international manufacturers and Bangladesh's defence system.
-            </p>
+            </span>
           </div>
 
-          {/* Compact Services Grid - Similar to Process Section */}
-          <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-6 max-w-7xl mx-auto">
-            {services.map((service, index) => {
-              const Icon = service.icon
-              return (
-                <motion.div 
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1, duration: 0.6 }}
-                  viewport={{ once: true }}
-                  className="relative"
-                >
-                  {/* Service Number Node */}
-                  <motion.div 
-                    className="flex justify-center mb-6"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ type: "spring", stiffness: 300 }}
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-steel-100 mb-4">
+            Strategic{' '}
+            <span className="text-gradient-gold">
+              Local Representation
+            </span>
+          </h2>
+          <p className="text-steel-400 max-w-3xl mx-auto text-lg">
+            DGDP procurement requires local representation. We bridge the gap between
+            international manufacturers and Bangladesh&apos;s defence system.
+          </p>
+        </motion.div>
+
+        {/* Services Grid */}
+        <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-6">
+          {services.map((service, index) => {
+            const Icon = service.icon
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+                viewport={{ once: true }}
+                className="relative"
+              >
+                {/* Service Number Badge */}
+                <div className="flex justify-center mb-6">
+                  <div
+                    className="w-14 h-14 bg-gold-500 flex items-center justify-center text-navy-900 font-bold text-lg"
+                    style={{
+                      clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)'
+                    }}
                   >
-                    <div className="w-14 h-14 bg-gradient-to-br from-amber-500 to-amber-600 rounded-sm flex items-center justify-center text-gray-900 font-black text-lg shadow-xl z-10 border-3 border-gray-800 transform rotate-45">
-                      <span className="transform -rotate-45">{service.number}</span>
-                    </div>
-                  </motion.div>
-                  
-                  {/* Service Card */}
-                  <div className="group bg-gray-800/80 backdrop-blur-sm rounded-sm shadow-xl hover:shadow-amber-500/30 transition-all duration-300 overflow-hidden border-2 border-gray-700 hover:border-amber-500/50">
-                    {/* Icon Display */}
-                    <div className={`relative h-32 overflow-hidden bg-gradient-to-br ${service.color} flex items-center justify-center`}>
-                      {/* Background Pattern */}
-                      <div className="absolute inset-0 opacity-10">
-                        <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900"></div>
-                        <div className="absolute inset-0 tech-grid-glow"></div>
-                      </div>
-                      
-                      {/* Icon */}
-                      <div className={`${service.iconColor} drop-shadow-2xl`}>
-                        <Icon size={80} className="filter drop-shadow-lg" />
-                      </div>
-                      
-                      {/* Glow Effect */}
-                      <div className="absolute inset-0 blur-xl opacity-30 group-hover:opacity-50 transition-opacity">
-                        <Icon size={80} className={service.iconColor} />
-                      </div>
-                    </div>
-                    
-                    {/* Service Content */}
-                    <div className="p-4">
-                      <h3 className="text-lg font-black text-gray-100 mb-2 uppercase tracking-wide">
-                        {service.title}
-                      </h3>
-                      <p className="text-gray-400 text-xs mb-3 leading-relaxed">
-                        {service.description}
-                      </p>
-                      
-                      {/* Compact Features */}
-                      <ul className="space-y-1">
-                        {service.features.map((feature, fIndex) => (
-                          <li key={fIndex} className="flex items-start">
-                            <svg className="w-3 h-3 text-amber-400 mr-1.5 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                            </svg>
-                            <span className="text-xs text-gray-400 font-semibold">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                    {service.number}
                   </div>
-                </motion.div>
-              )
-            })}
-          </div>
-          
-          {/* Compact Stats Section */}
-          <div className="mt-12 bg-gradient-to-r from-gray-800 to-slate-800 rounded-sm p-8 text-white border-2 border-amber-500/30 relative overflow-hidden">
-            <div className="absolute inset-0 tech-grid-glow"></div>
-            <div className="relative z-10">
-              <div className="grid md:grid-cols-4 gap-6">
-                {[
-                  { value: "60%", label: "Faster Processing" },
-                  { value: "100%", label: "Bengali Support" },
-                  { value: "24/7", label: "Local Presence" },
-                  { value: "100%", label: "Success Rate" }
-                ].map((stat, index) => (
-                  <div key={index} className="text-center">
-                    <div className="text-3xl font-black text-amber-400 mb-1">
-                      {stat.value}
-                    </div>
-                    <div className="text-gray-300 font-bold uppercase tracking-wider text-xs">
-                      {stat.label}
-                    </div>
+                </div>
+
+                {/* Service Card */}
+                <div
+                  className="group bg-navy-800 border border-navy-600 hover:border-gold-500 transition-all duration-300 overflow-hidden"
+                  style={{
+                    clipPath: 'polygon(16px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 16px)'
+                  }}
+                >
+                  {/* Icon Display */}
+                  <div className="h-32 flex items-center justify-center bg-navy-700/50 border-b border-navy-600">
+                    <GoldIcon icon={Icon} size={56} strokeWidth={1.25} className="drop-shadow-[0_0_10px_rgba(201,169,97,0.3)]" />
                   </div>
-                ))}
-              </div>
+
+                  {/* Service Content */}
+                  <div className="p-5">
+                    <h3 className="text-lg font-bold text-steel-100 mb-2 uppercase tracking-wide">
+                      {service.title}
+                    </h3>
+                    <p className="text-steel-400 text-sm mb-4 leading-relaxed">
+                      {service.description}
+                    </p>
+
+                    {/* Features with Gold Checkmarks */}
+                    <ul className="space-y-2">
+                      {service.features.map((feature, fIndex) => (
+                        <li key={fIndex} className="flex items-center gap-2">
+                          <Check className="w-4 h-4 text-gold-500 flex-shrink-0" strokeWidth={2} />
+                          <span className="text-sm text-steel-300">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Hover glow effect */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none shadow-gold-glow" />
+                </div>
+              </motion.div>
+            )
+          })}
+        </div>
+
+        {/* Stats Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-16"
+        >
+          <div
+            className="bg-navy-800 border border-navy-600 p-8"
+            style={{
+              clipPath: 'polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px)'
+            }}
+          >
+            <div className="grid md:grid-cols-4 gap-8">
+              {[
+                { value: "60%", label: "Faster Processing" },
+                { value: "100%", label: "Bengali Support" },
+                { value: "24/7", label: "Local Presence" },
+                { value: "100%", label: "Success Rate" }
+              ].map((stat, index) => (
+                <div key={index} className="text-center">
+                  <div className="text-3xl font-bold text-gold-500 mb-1">
+                    {stat.value}
+                  </div>
+                  <div className="text-steel-400 font-medium uppercase tracking-wider text-sm">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
-      {/* Section Divider */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-500/50 to-transparent"></div>
     </section>
   )
 }
